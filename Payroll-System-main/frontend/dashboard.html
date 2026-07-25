@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayrollPro - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="sidebarContainer"></div>
+    <main class="main-content">
+        <div class="page-header d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="page-title">Dashboard</h1>
+                <p class="text-muted mb-0">Welcome back, Admin</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+                <button class="btn btn-primary" onclick="location.href='addEmployee.html'">
+                    <i class="bi bi-person-plus me-1"></i>Add Employee
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4" id="statsCards">
+            <div class="col-md-6 col-xl">
+                <div class="stat-card stat-primary animate-slide-up">
+                    <div class="stat-icon"><i class="bi bi-people"></i></div>
+                    <div class="stat-info">
+                        <h3 id="totalEmployees">--</h3>
+                        <p>Total Employees</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl">
+                <div class="stat-card stat-success animate-slide-up" style="animation-delay: 0.1s">
+                    <div class="stat-icon"><i class="bi bi-cash-stack"></i></div>
+                    <div class="stat-info">
+                        <h3 id="totalPayroll">--</h3>
+                        <p>Total Payroll</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl">
+                <div class="stat-card stat-info animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="stat-icon"><i class="bi bi-graph-up"></i></div>
+                    <div class="stat-info">
+                        <h3 id="averageSalary">--</h3>
+                        <p>Average Salary</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl">
+                <div class="stat-card stat-warning animate-slide-up" style="animation-delay: 0.3s">
+                    <div class="stat-icon"><i class="bi bi-trophy"></i></div>
+                    <div class="stat-info">
+                        <h3 id="highestSalary">--</h3>
+                        <p>Highest Salary</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl">
+                <div class="stat-card stat-danger animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+                    <div class="stat-info">
+                        <h3 id="totalTax">--</h3>
+                        <p>Tax Collected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mb-0"><i class="bi bi-lightning me-2"></i>Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <a href="employees.html" class="quick-action-btn">
+                                    <i class="bi bi-people-fill"></i>
+                                    <span>Manage Employees</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="addEmployee.html" class="quick-action-btn">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                    <span>Add Employee</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="payroll.html" class="quick-action-btn">
+                                    <i class="bi bi-calculator-fill"></i>
+                                    <span>Payroll Calculator</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="analytics.html" class="quick-action-btn">
+                                    <i class="bi bi-bar-chart-fill"></i>
+                                    <span>Analytics</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="payroll.html" class="quick-action-btn">
+                                    <i class="bi bi-file-earmark-text-fill"></i>
+                                    <span>Generate Payslip</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="analytics.html" class="quick-action-btn">
+                                    <i class="bi bi-download"></i>
+                                    <span>Export Reports</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent">
+                        <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5>
+                    </div>
+                    <div class="card-body" id="recentActivity">
+                        <p class="text-muted text-center">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        checkAuth();
+        renderSidebar('dashboard');
+        loadDashboard();
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayrollPro - Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="sidebarContainer"></div>
+    <main class="main-content">
+        <div class="page-header d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="page-title" id="formTitle">Add Employee</h1>
+                <p class="text-muted mb-0">Fill in employee details</p>
+            </div>
+            <button class="btn btn-outline-secondary" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <form id="employeeForm">
+                    <input type="hidden" id="editMode" value="false">
+                    <input type="hidden" id="originalId" value="">
+
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label">Employee ID <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="empId" required placeholder="e.g. EMP001">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="empName" required placeholder="John Doe">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Department <span class="text-danger">*</span></label>
+                            <select class="form-select" id="empDepartment" required>
+                                <option value="">Select Department</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Designation <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="empDesignation" required placeholder="Software Engineer">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Employee Type <span class="text-danger">*</span></label>
+                            <select class="form-select" id="empType" required>
+                                <option value="">Select Type</option>
+                                <option value="FullTime">Full Time</option>
+                                <option value="Contractor">Contractor</option>
+                                <option value="Intern">Intern</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Profile Photo</label>
+                            <input type="file" class="form-control" id="empPhoto" accept="image/*">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Base Salary <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="empSalary" required min="0" step="100" placeholder="50000">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Bonus</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="empBonus" min="0" step="100" value="0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Allowance</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="empAllowance" min="0" step="100" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Time Fields -->
+                    <div id="fullTimeFields" class="row g-4 mt-2 d-none">
+                        <div class="col-12"><hr><h6 class="text-muted">Full Time Details</h6></div>
+                        <div class="col-md-4">
+                            <label class="form-label">HRA</label>
+                            <input type="number" class="form-control" id="empHRA" min="0" step="100">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">DA</label>
+                            <input type="number" class="form-control" id="empDA" min="0" step="100">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">PF (0 = auto 12%)</label>
+                            <input type="number" class="form-control" id="empPF" min="0" step="100" value="0">
+                        </div>
+                    </div>
+
+                    <!-- Contractor Fields -->
+                    <div id="contractorFields" class="row g-4 mt-2 d-none">
+                        <div class="col-12"><hr><h6 class="text-muted">Contractor Details</h6></div>
+                        <div class="col-md-4">
+                            <label class="form-label">Contract Duration (months)</label>
+                            <input type="number" class="form-control" id="empContractDuration" min="1" value="12">
+                        </div>
+                    </div>
+
+                    <!-- Intern Fields -->
+                    <div id="internFields" class="row g-4 mt-2 d-none">
+                        <div class="col-12"><hr><h6 class="text-muted">Intern Details</h6></div>
+                        <div class="col-md-6">
+                            <label class="form-label">University</label>
+                            <input type="text" class="form-control" id="empUniversity" placeholder="University name">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Internship Duration (months)</label>
+                            <input type="number" class="form-control" id="empInternMonths" min="1" value="6">
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-check-lg me-1"></i>Save Employee
+                        </button>
+                        <a href="employees.html" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        checkAuth();
+        renderSidebar('addEmployee');
+        initAddEmployeePage();
+    </script>
+</body>
+</html>

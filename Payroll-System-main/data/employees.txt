@@ -1,0 +1,8 @@
+FullTime|EMP001|Rajesh Kumar|Engineering|Senior Software Engineer|85000|10000|5000|34000|17000|0|
+FullTime|EMP002|Priya Sharma|HR|HR Manager|65000|8000|4000|26000|13000|0|
+Contractor|EMP003|Amit Patel|Marketing|Marketing Consultant|55000|5000|3000|12|0|0|
+Intern|EMP004|Sneha Reddy|Engineering|Software Intern|25000|2000|1500|IIT Delhi|6|0|
+FullTime|EMP005|Vikram Singh|Finance|Financial Analyst|70000|7000|3500|28000|14000|0|
+Contractor|EMP006|Anita Desai|Operations|Operations Lead|60000|6000|2500|6|0|0|
+Intern|EMP007|Rahul Mehta|Marketing|Marketing Intern|20000|1000|1000|Delhi University|3|0|
+FullTime|EMP008|Kavita Nair|Engineering|Tech Lead|120000|15000|8000|48000|24000|0|

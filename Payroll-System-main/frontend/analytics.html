@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayrollPro - Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="sidebarContainer"></div>
+    <main class="main-content">
+        <div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <h1 class="page-title">Analytics Dashboard</h1>
+                <p class="text-muted mb-0">Payroll insights and trends</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+                <button class="btn btn-outline-primary" id="exportAnalytics">
+                    <i class="bi bi-download me-1"></i>Export Data
+                </button>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="stat-card stat-primary">
+                    <div class="stat-icon"><i class="bi bi-people"></i></div>
+                    <div class="stat-info"><h3 id="anEmpCount">--</h3><p>Employees</p></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card stat-success">
+                    <div class="stat-icon"><i class="bi bi-cash"></i></div>
+                    <div class="stat-info"><h3 id="anTotalPayroll">--</h3><p>Total Payroll</p></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card stat-info">
+                    <div class="stat-icon"><i class="bi bi-graph-up"></i></div>
+                    <div class="stat-info"><h3 id="anAvgSalary">--</h3><p>Avg Salary</p></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card stat-danger">
+                    <div class="stat-icon"><i class="bi bi-receipt"></i></div>
+                    <div class="stat-info"><h3 id="anTotalTax">--</h3><p>Total Tax</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent"><h5 class="mb-0">Department-wise Salary</h5></div>
+                    <div class="card-body"><canvas id="deptBarChart" height="280"></canvas></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent"><h5 class="mb-0">Employee Type Distribution</h5></div>
+                    <div class="card-body"><canvas id="typePieChart" height="280"></canvas></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent"><h5 class="mb-0">Highest Paid Employees</h5></div>
+                    <div class="card-body"><canvas id="topPaidChart" height="280"></canvas></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent"><h5 class="mb-0">Payroll & Tax Trend</h5></div>
+                    <div class="card-body"><canvas id="trendLineChart" height="280"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        checkAuth();
+        renderSidebar('analytics');
+        initAnalyticsPage();
+    </script>
+</body>
+</html>
